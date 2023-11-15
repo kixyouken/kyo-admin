@@ -9,6 +9,18 @@
             "jump": "index"
         },
         {
+            "name": "provinces",
+            "title": "省",
+            "icon": "",
+            "jump": "area/provinces"
+        },
+        {
+            "name": "citys",
+            "title": "市",
+            "icon": "",
+            "jump": "area/citys"
+        },
+        {
             "name": "user",
             "title": "用户",
             "icon": "layui-icon-user",

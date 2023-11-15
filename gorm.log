@@ -1,0 +1,174 @@
+
+2023/10/23 19:07:29 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[3.284ms] [rows:342] SELECT * FROM `citys`
+
+2023/10/23 19:08:40 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[2.634ms] [rows:31] SELECT * FROM `provinces`
+
+2023/10/23 19:09:01 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[0.956ms] [rows:31] SELECT * FROM `provinces`
+
+2023/10/23 19:09:06 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[3.610ms] [rows:342] SELECT * FROM `citys`
+
+2023/10/23 19:09:16 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[3.176ms] [rows:342] SELECT * FROM `citys`
+
+2023/10/23 19:09:17 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[2.567ms] [rows:342] SELECT * FROM `citys`
+
+2023/10/23 19:09:26 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[2.615ms] [rows:342] SELECT * FROM `citys`
+
+2023/10/23 19:09:56 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[3.194ms] [rows:342] SELECT * FROM `citys`
+
+2023/10/23 19:10:10 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[1.080ms] [rows:31] SELECT * FROM `provinces`
+
+2023/10/23 19:11:15 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[3.157ms] [rows:342] SELECT * FROM `citys`
+
+2023/10/23 19:11:20 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[2.128ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:12:50 C:/phpstudy/WWW/kyo-admin/databases/mysql.go:39
+[error] failed to initialize database, got error dial tcp [::1]:3306: connectex: No connection could be made because the target machine actively refused it.
+
+2023/11/15 15:18:56 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[32.318ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:19:16 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[26.895ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:19:38 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[0.513ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:19:39 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[1.995ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:20:58 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[2.984ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:21:00 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[0.535ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:23:25 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[0.515ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:23:27 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[2.518ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:32:36 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[0.509ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:32:40 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[2.514ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:33:39 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[2.667ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:33:40 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[0.774ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:35:26 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[0.512ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:35:28 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[2.644ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:38:50 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[1.917ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:38:57 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[4.081ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:40:23 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[1.101ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:40:25 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[3.111ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:41:04 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[1.000ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:41:06 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[3.738ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:41:07 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[1.616ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:41:08 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[3.396ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:41:09 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[0.675ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:41:10 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[3.130ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:41:12 C:/phpstudy/WWW/kyo-admin/services/db.go:18
+[1.181ms] [rows:31] SELECT * FROM `provinces`
+
+2023/11/15 15:48:02 C:/phpstudy/WWW/kyo-admin/services/db.go:20
+[10.196ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:48:23 C:/phpstudy/WWW/kyo-admin/services/db.go:20
+[4.956ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:48:27 C:/phpstudy/WWW/kyo-admin/services/db.go:20
+[3.968ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:48:57 C:/phpstudy/WWW/kyo-admin/services/db.go:20
+[4.900ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:50:05 C:/phpstudy/WWW/kyo-admin/services/db.go:21
+[4.391ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:50:11 C:/phpstudy/WWW/kyo-admin/services/db.go:21
+[3.504ms] [rows:342] SELECT * FROM `citys`
+
+2023/11/15 15:54:59 C:/phpstudy/WWW/kyo-admin/services/db.go:28
+[2.529ms] [rows:10] SELECT * FROM `citys` LIMIT 10
+
+2023/11/15 15:59:23 C:/phpstudy/WWW/kyo-admin/services/db.go:33
+[3.569ms] [rows:1] SELECT count(*) FROM `citys`
+
+2023/11/15 15:59:23 C:/phpstudy/WWW/kyo-admin/services/db.go:28
+[0.518ms] [rows:10] SELECT * FROM `citys` LIMIT 10
+
+2023/11/15 15:59:29 C:/phpstudy/WWW/kyo-admin/services/db.go:33
+[0.287ms] [rows:1] SELECT count(*) FROM `citys`
+
+2023/11/15 15:59:29 C:/phpstudy/WWW/kyo-admin/services/db.go:28
+[0.508ms] [rows:10] SELECT * FROM `citys` LIMIT 10
+
+2023/11/15 16:01:35 C:/phpstudy/WWW/kyo-admin/services/db.go:33
+[0.880ms] [rows:1] SELECT count(*) FROM `citys`
+
+2023/11/15 16:01:35 C:/phpstudy/WWW/kyo-admin/services/db.go:28
+[0.517ms] [rows:10] SELECT * FROM `citys` LIMIT 10
+
+2023/11/15 16:01:38 C:/phpstudy/WWW/kyo-admin/services/db.go:33
+[1.045ms] [rows:1] SELECT count(*) FROM `citys`
+
+2023/11/15 16:01:38 C:/phpstudy/WWW/kyo-admin/services/db.go:28
+[0.508ms] [rows:10] SELECT * FROM `citys` LIMIT 10 OFFSET 10
+
+2023/11/15 16:01:39 C:/phpstudy/WWW/kyo-admin/services/db.go:33
+[0.475ms] [rows:1] SELECT count(*) FROM `citys`
+
+2023/11/15 16:01:39 C:/phpstudy/WWW/kyo-admin/services/db.go:28
+[0.558ms] [rows:10] SELECT * FROM `citys` LIMIT 10 OFFSET 20
+
+2023/11/15 16:01:40 C:/phpstudy/WWW/kyo-admin/services/db.go:33
+[1.124ms] [rows:1] SELECT count(*) FROM `citys`
+
+2023/11/15 16:01:40 C:/phpstudy/WWW/kyo-admin/services/db.go:28
+[1.572ms] [rows:2] SELECT * FROM `citys` LIMIT 10 OFFSET 340
+
+2023/11/15 16:01:42 C:/phpstudy/WWW/kyo-admin/services/db.go:33
+[0.486ms] [rows:1] SELECT count(*) FROM `citys`
+
+2023/11/15 16:01:42 C:/phpstudy/WWW/kyo-admin/services/db.go:28
+[1.629ms] [rows:10] SELECT * FROM `citys` LIMIT 10 OFFSET 320

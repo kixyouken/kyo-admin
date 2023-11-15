@@ -21,19 +21,19 @@
     <script>
         layui.config({
             base: 'res/', // 静态资源所在路径
-            version: '2.2.0'
+            version: 0
         }).use('index', function () {
             var layer = layui.layer;
             var admin = layui.admin;
             // 提示语
-            layer.ready(function () {
-                admin.popup({
-                    content: '单页面版默认未开启“标签页”功能，实际使用时，你可以自定义是否开启'
-                    , area: '300px'
-                    , shade: false
-                    , offset: 't'
-                });
-            });
+            // layer.ready(function () {
+            //     admin.popup({
+            //         content: '单页面版默认未开启“标签页”功能，实际使用时，你可以自定义是否开启'
+            //         , area: '300px'
+            //         , shade: false
+            //         , offset: 't'
+            //     });
+            // });
         });
     </script>
 </body>
