@@ -27,6 +27,21 @@ func Paginate(c *gin.Context) {
 	utils.Paginate(c, result, count)
 }
 
+func Find(c *gin.Context) {
+	param := utils.GetForm(c)
+	if !utils.VerifyCaptcha(param["id"].(string), param["vercode"].(string)) {
+		utils.Errorful(c)
+		return
+	}
+
+	table := c.Param("table")
+	result := map[string]interface{}{}
+	delete(param, "id")
+	delete(param, "vercode")
+	services.DbServices.Find(c, table, &result, "*", param)
+	utils.Dataful(c, result)
+}
+
 func Save(c *gin.Context) {
 
 }

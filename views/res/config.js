@@ -22,7 +22,7 @@ layui.define(['all'], function(exports){
     pageTabs: false, // 是否开启页面选项卡功能。单页版不推荐开启
     refreshCurrPage: true, // 当跳转页面 url 与当前页 url 相同时，是否自动执行刷新
     
-    name: 'layuiAdmin',
+    name: 'kyoAdmin',
     tableName: 'layuiAdmin', // 本地存储表名
     MOD_NAME: 'admin', // 模块事件名
     

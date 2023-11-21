@@ -13,6 +13,8 @@ func GetRouter() *gin.Engine {
 
 	admin := r.Group("admin")
 	{
+		admin.GET("/captcha", controllers.Captcha)
+		admin.POST("/:table/login", controllers.Find)
 		admin.GET("/model/:model", controllers.Model)
 		admin.GET("/table/:table", controllers.Table)
 		admin.GET("/form/:form", controllers.Form)

@@ -1,7 +1,6 @@
 package services
 
 import (
-	"fmt"
 	"kyo-admin/databases"
 	"strconv"
 	"strings"
@@ -27,6 +26,14 @@ func (s *sDbServices) Paginate(c *gin.Context, table string, out, columns interf
 	return db.Table(table).
 		Scopes(s.Page(c), s.Search(c, param)).
 		Select(columns).
+		Find(out).Error
+}
+
+func (s *sDbServices) Find(c *gin.Context, table string, out, columns interface{}, param map[string]interface{}) error {
+	return db.Table(table).
+		Where(param).
+		Select(columns).
+		Limit(1).
 		Find(out).Error
 }
 
@@ -77,12 +84,12 @@ func (s *sDbServices) Search(c *gin.Context, param map[string]string) func(db *g
 		for k, v := range param {
 			if v != "" {
 				slice := strings.Split(k, ".")
-				switch slice[1] {
-				case "like":
+				match := strings.ToUpper(slice[1])
+				switch match {
+				case "LIKE":
 					v = "%" + v + "%"
 				}
-				where := fmt.Sprintf("%s %s \"%s\"", slice[0], slice[1], v)
-				db.Where(where)
+				db.Where(slice[0]+" "+match+" ?", v)
 			}
 		}
 		return db
