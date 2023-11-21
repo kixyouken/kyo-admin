@@ -11,6 +11,13 @@ func GetRouter() *gin.Engine {
 
 	r.Static("/views", "./views")
 
+	admin := r.Group("admin")
+	{
+		admin.GET("/model/:model", controllers.Model)
+		admin.GET("/table/:table", controllers.Table)
+		admin.GET("/form/:form", controllers.Form)
+	}
+
 	api := r.Group("api")
 	{
 		api.GET("/table/:table/get", controllers.Get)

@@ -1,0 +1,15 @@
+{
+    "code": 0,
+    "data": [
+        {
+            "field": "id",
+            "match": "=",
+            "title": "ID"
+        },
+        {
+            "field": "name",
+            "match": "like",
+            "title": "名称"
+        }
+    ]
+}

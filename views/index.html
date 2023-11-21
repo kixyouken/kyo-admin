@@ -21,7 +21,7 @@
     <script>
         layui.config({
             base: 'res/', // 静态资源所在路径
-            version: 0
+            version: new Date().getTime()
         }).use('index', function () {
             var layer = layui.layer;
             var admin = layui.admin;

@@ -1,5 +1,15 @@
 <title>网站用户</title>
 
+<style>
+    .layui-input-prefix {
+        width: 80px;
+    }
+
+    .layui-input {
+        padding-left: 70px !important;
+    }
+</style>
+
 <div class="layui-card layadmin-header">
     <div class="layui-breadcrumb" lay-filter="breadcrumb">
         <a lay-href="">主页</a>
@@ -12,54 +22,50 @@
     <div class="layui-card">
         <div class="layui-card-header">卡片面板</div>
         <div class="layui-card-body">
+            <!-- <script type="text/html" template lay-url="../../views/res/filter/provinces.json?v=1"> -->
             <form class="layui-form layui-row layui-col-space15">
+                <!-- {{#
+                        layui.each(d.data, function(index, item){ }}
+                        <div class="layui-col-md4">
+                            <div class="layui-input-wrap">
+                                <div class="layui-input-prefix" style="width: 60px;">
+                                    {{ item.title }}
+                                </div>
+                                <input type="text" name="{{ item.field }}.{{ item.match }}" value="" placeholder="请输入 {{ item.title }}" class="layui-input"
+                                    lay-affix="clear" style="padding-left: 60px;">
+                            </div>
+                        </div>
+                        {{# });
+                    }} -->
                 <div class="layui-col-md4">
                     <div class="layui-input-wrap">
                         <div class="layui-input-prefix">
-                            <i class="layui-icon layui-icon-username"></i>
+                            省ID
                         </div>
-                        <input type="text" name="A" value="" placeholder="Field A" class="layui-input"
+                        <input type="text" name="province_id.=" value="" placeholder="Field A" class="layui-input"
                             lay-affix="clear">
                     </div>
                 </div>
-                <div class="layui-col-md4">
-                    <div class="layui-input-wrap">
-                        <input type="text" name="B" placeholder="Field B" lay-affix="clear" class="layui-input">
-                    </div>
-                </div>
+
                 <div class="layui-col-md4">
                     <div class="layui-input-wrap">
                         <div class="layui-input-prefix">
-                            <i class="layui-icon layui-icon-date"></i>
+                            省名称
                         </div>
-                        <input type="text" name="C" readonly placeholder="Field C"
-                            class="layui-input demo-table-search-date">
+                        <input type="text" name="province_name.like" placeholder="Field C" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-btn-container layui-col-xs12">
-                    <button class="layui-btn" lay-submit lay-filter="demo-table-search">Search</button>
+                    <button class="layui-btn" lay-submit lay-filter="KYO-provinces-table-search">Search</button>
                     <button type="reset" class="layui-btn layui-btn-primary">Clear</button>
                 </div>
             </form>
+            <!-- </script> -->
             <table class="layui-hide" id="KYO-provinces-table"></table>
         </div>
     </div>
 </div>
 
 <script>
-    layui.use(['table'], function () {
-        var table = layui.table
-            , form = layui.form;
-
-        table.render({
-            elem: '#KYO-provinces-table'
-            , url: '/api/table/provinces/get'
-            , cols: [[
-                { field: 'id', width: 100, title: 'ID' }
-                , { field: 'province_id', title: '省ID' }
-                , { field: 'province_name', title: '省名称' }
-            ]]
-        });
-
-    });
+    layui.use('provinces', layui.factory('provinces'));
 </script>
