@@ -38,13 +38,9 @@ layui.define(['laytpl', 'layer'], function(exports){
   //清除 token，并跳转到登入页
   view.exit = function(){
     //清空本地记录的 token
-    layui.data(setter.tableName, {
-      key: setter.request.tokenName
-      ,remove: true
-    });
-    
+    layui.data(setter.tableName, null);
     //跳转到登入页
-    location.hash = '/user/login'; 
+    location.hash = '/admin/login'; 
   };
   
   //Ajax请求

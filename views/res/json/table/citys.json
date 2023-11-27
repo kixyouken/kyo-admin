@@ -1,0 +1,12 @@
+{
+    "table": "citys",
+    "joins": [
+        {
+            "join": "inner",
+            "table": "provinces",
+            "foreign": "province_id",
+            "key": "province_id",
+            "fields": ["province_id", "province_name"]
+        }
+    ]
+}

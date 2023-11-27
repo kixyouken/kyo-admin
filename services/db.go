@@ -2,6 +2,7 @@ package services
 
 import (
 	"kyo-admin/databases"
+	"kyo-admin/utils"
 	"strconv"
 	"strings"
 
@@ -22,9 +23,9 @@ func (s *sDbServices) Get(c *gin.Context, table string, out, columns interface{}
 		Find(out).Error
 }
 
-func (s *sDbServices) Paginate(c *gin.Context, table string, out, columns interface{}, param map[string]string) error {
+func (s *sDbServices) Paginate(c *gin.Context, table string, out, columns interface{}, param map[string]string, tableFile *utils.TableFile) error {
 	return db.Table(table).
-		Scopes(s.Page(c), s.Search(c, param)).
+		Scopes(s.Page(c), s.Search(c, param), s.Fields(c, tableFile), s.Joins(c, tableFile)).
 		Select(columns).
 		Find(out).Error
 }
@@ -37,9 +38,10 @@ func (s *sDbServices) Find(c *gin.Context, table string, out, columns interface{
 		Find(out).Error
 }
 
-func (s *sDbServices) Count(c *gin.Context, table string, count *int64, param map[string]string) error {
+func (s *sDbServices) Count(c *gin.Context, table string, count *int64, param map[string]string, tableFile *utils.TableFile) error {
 	return db.Table(table).
-		Scopes(s.Search(c, param)).
+		Scopes(s.Search(c, param), s.Joins(c, tableFile)).
+		Limit(1).
 		Count(count).Error
 }
 
@@ -84,14 +86,45 @@ func (s *sDbServices) Search(c *gin.Context, param map[string]string) func(db *g
 		for k, v := range param {
 			if v != "" {
 				slice := strings.Split(k, ".")
-				match := strings.ToUpper(slice[1])
+				match := strings.ToUpper(slice[2])
 				switch match {
 				case "LIKE":
 					v = "%" + v + "%"
+					db.Where(slice[0]+"."+slice[1]+" "+match+" ?", v)
+				case "BETWEEN":
+					between := strings.Split(v, " - ")
+					db.Where(slice[0]+"."+slice[1]+" BETWEEN ? AND ?", between[0], between[1])
+				default:
+					db.Where(slice[0]+"."+slice[1]+" "+match+" ?", v)
 				}
-				db.Where(slice[0]+" "+match+" ?", v)
 			}
 		}
 		return db
+	}
+}
+
+func (s *sDbServices) Joins(c *gin.Context, tableFile *utils.TableFile) func(db *gorm.DB) *gorm.DB {
+	return func(db *gorm.DB) *gorm.DB {
+		if tableFile != nil {
+			for _, join := range tableFile.Joins {
+				db.Joins(strings.ToUpper(join.Join) + " JOIN " + join.Table + " ON " + tableFile.Table + "." + join.Foreign + " = " + join.Table + "." + join.Key)
+			}
+		}
+		return db
+	}
+}
+
+func (s *sDbServices) Fields(c *gin.Context, tableFile *utils.TableFile) func(db *gorm.DB) *gorm.DB {
+	return func(db *gorm.DB) *gorm.DB {
+		fields := []string{}
+		if tableFile != nil {
+			fields = append(fields, tableFile.Table+".*")
+			for _, join := range tableFile.Joins {
+				for _, v := range join.Fields {
+					fields = append(fields, join.Table+"."+v+" AS "+join.Table+"_"+v)
+				}
+			}
+		}
+		return db.Select(fields)
 	}
 }

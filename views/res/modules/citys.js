@@ -12,6 +12,7 @@ layui.define(['admin'], function (exports) {
         , cols: [[
             { field: 'id', width: 100, title: 'ID' }
             , { field: 'province_id', title: '省ID' }
+            , { field: 'provinces_province_name', title: '省名称' }
             , { field: 'city_id', title: '市ID' }
             , { field: 'city_name', title: '市名称' }
         ]]

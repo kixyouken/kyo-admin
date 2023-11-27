@@ -26,11 +26,39 @@
                 <div class="layui-col-md4">
                     <div class="layui-input-wrap">
                         <div class="layui-input-prefix">
+                            姓名
+                        </div>
+                        <input type="text" name="users.user_name.like" placeholder="姓名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-input-wrap">
+                        <div class="layui-input-prefix">
+                            生日
+                        </div>
+                        <input type="text" name="users.birthday.between" id="KYO-users-birthday" placeholder="生日" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-input-wrap">
+                        <div class="layui-input-prefix">
+                            状态
+                        </div>
+                        <select name="users.state.=">
+                            <option value="">请选择</option>
+                            <option value="0">正常</option>
+                            <option value="1">删除</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-input-wrap">
+                        <div class="layui-input-prefix">
                             省名称
                         </div>
                         <script type="text/html" template lay-url="/api/table/provinces/get"
                             lay-done="layui.form.render();">
-                            <select name="citys.province_id.=">
+                            <select name="users.province_id.=">
                                 <option value="">请选择</option>
                                 {{#
                                     layui.each(d.data, function(index, item){ }}
@@ -41,24 +69,16 @@
                         </script>
                     </div>
                 </div>
-                <div class="layui-col-md4">
-                    <div class="layui-input-wrap">
-                        <div class="layui-input-prefix">
-                            市名称
-                        </div>
-                        <input type="text" name="citys.city_name.like" placeholder="市名称" class="layui-input">
-                    </div>
-                </div>
                 <div class="layui-btn-container layui-col-xs12">
-                    <button class="layui-btn" lay-submit lay-filter="KYO-citys-table-search">搜索</button>
+                    <button class="layui-btn" lay-submit lay-filter="KYO-users-table-search">搜索</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </form>
-            <table class="layui-hide" id="KYO-citys-table"></table>
+            <table class="layui-hide" id="KYO-users-table"></table>
         </div>
     </div>
 </div>
 
 <script>
-    layui.use('citys', layui.factory('citys'));
+    layui.use('users', layui.factory('users'));
 </script>

@@ -2,19 +2,19 @@ package utils
 
 import "github.com/gin-gonic/gin"
 
-func Successful(c *gin.Context) {
+func Successful(c *gin.Context, msg interface{}) {
 	c.JSON(200, gin.H{
 		"code":   0,
 		"status": 200,
-		"msg":    "success",
+		"msg":    msg,
 	})
 }
 
-func Errorful(c *gin.Context) {
+func Errorful(c *gin.Context, msg interface{}) {
 	c.JSON(200, gin.H{
 		"code":   0,
 		"status": 400,
-		"msg":    "error",
+		"msg":    msg,
 	})
 }
 
