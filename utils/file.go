@@ -8,8 +8,10 @@ import (
 )
 
 type TableFile struct {
-	Table string       `json:"table"`
-	Joins []TableJoins `json:"joins"`
+	Table  string        `json:"table"`
+	Wheres []TableWheres `json:"wheres"`
+	Joins  []TableJoins  `json:"joins"`
+	Orders []TableOrders `json:"orders"`
 }
 
 type TableJoins struct {
@@ -18,6 +20,16 @@ type TableJoins struct {
 	Foreign string   `json:"foreign"`
 	Key     string   `json:"key"`
 	Fields  []string `json:"fields"`
+}
+
+type TableOrders struct {
+	Field string `json:"field"`
+	Order string `json:"Order"`
+}
+
+type TableWheres struct {
+	Field string `json:"field"`
+	Value string `json:"value"`
 }
 
 func GetTableJson(c *gin.Context, table string) (*TableFile, error) {

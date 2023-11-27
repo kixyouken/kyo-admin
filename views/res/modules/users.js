@@ -43,6 +43,7 @@ layui.define(['admin'], function (exports) {
                     }
                 }
             }
+            , { title: '操作', width: 150, toolbar: '#KYO-users-table-bar' }
         ]]
         , page: true
     });

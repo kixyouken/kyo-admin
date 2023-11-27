@@ -25,7 +25,7 @@ func (s *sDbServices) Get(c *gin.Context, table string, out, columns interface{}
 
 func (s *sDbServices) Paginate(c *gin.Context, table string, out, columns interface{}, param map[string]string, tableFile *utils.TableFile) error {
 	return db.Table(table).
-		Scopes(s.Page(c), s.Search(c, param), s.Fields(c, tableFile), s.Joins(c, tableFile)).
+		Scopes(s.Page(c), s.Search(c, param), s.Fields(c, tableFile), s.Joins(c, tableFile), s.Orders(c, tableFile), s.Wheres(c, tableFile)).
 		Select(columns).
 		Find(out).Error
 }
@@ -40,7 +40,7 @@ func (s *sDbServices) Find(c *gin.Context, table string, out, columns interface{
 
 func (s *sDbServices) Count(c *gin.Context, table string, count *int64, param map[string]string, tableFile *utils.TableFile) error {
 	return db.Table(table).
-		Scopes(s.Search(c, param), s.Joins(c, tableFile)).
+		Scopes(s.Search(c, param), s.Joins(c, tableFile), s.Wheres(c, tableFile)).
 		Limit(1).
 		Count(count).Error
 }
@@ -126,5 +126,27 @@ func (s *sDbServices) Fields(c *gin.Context, tableFile *utils.TableFile) func(db
 			}
 		}
 		return db.Select(fields)
+	}
+}
+
+func (s *sDbServices) Wheres(c *gin.Context, tableFile *utils.TableFile) func(db *gorm.DB) *gorm.DB {
+	return func(db *gorm.DB) *gorm.DB {
+		if tableFile != nil {
+			for _, v := range tableFile.Wheres {
+				db.Where(v.Field + " " + v.Value)
+			}
+		}
+		return db
+	}
+}
+
+func (s *sDbServices) Orders(c *gin.Context, tableFile *utils.TableFile) func(db *gorm.DB) *gorm.DB {
+	return func(db *gorm.DB) *gorm.DB {
+		if tableFile != nil {
+			for _, v := range tableFile.Orders {
+				db.Order(v.Field + " " + v.Order)
+			}
+		}
+		return db
 	}
 }

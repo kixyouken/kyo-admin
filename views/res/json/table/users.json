@@ -22,5 +22,17 @@
             "key": "county_id",
             "fields": ["county_id", "county_name"]
         }
+    ],
+    "orders": [
+        {
+            "field": "users.user_id",
+            "order": ""
+        }
+    ],
+    "wheres": [
+        {
+            "field": "users.deleted_at",
+            "value": "is null"
+        }
     ]
 }
