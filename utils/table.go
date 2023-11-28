@@ -34,7 +34,7 @@ type TableWheres struct {
 
 func GetTableJson(c *gin.Context, table string) (*TableFile, error) {
 	tableFile := TableFile{}
-	data, err := os.ReadFile("./views/res/json/table/" + table + ".json")
+	data, err := os.ReadFile("./views/res/kyo/table/" + table + ".json")
 	if err != nil {
 		return nil, nil
 	}

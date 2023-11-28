@@ -5,6 +5,7 @@ import (
 	"kyo-admin/utils"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 func Model(c *gin.Context) {
@@ -35,6 +36,12 @@ func Login(c *gin.Context) {
 		utils.Errorful(c, "账号或密码错误")
 		return
 	}
+	key := utils.GetKey(c, table)
+	access_token := uuid.New()
+	services.DbServices.Update(c, table, result[key], map[string]interface{}{
+		"access_token": access_token,
+	})
+	result["access_token"] = access_token
 	utils.Dataful(c, result)
 }
 

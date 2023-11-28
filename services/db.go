@@ -53,8 +53,10 @@ func (s *sDbServices) Create(c *gin.Context) {
 
 }
 
-func (s *sDbServices) Update(c *gin.Context) {
-
+func (s *sDbServices) Update(c *gin.Context, table string, id, updates interface{}) error {
+	return db.Table(table).
+		Where(utils.GetKey(c, table)+" = ?", id).
+		Updates(updates).Error
 }
 
 func (s *sDbServices) Delete(c *gin.Context) {
