@@ -1,10 +1,12 @@
 package services
 
 import (
+	"fmt"
 	"kyo-admin/databases"
 	"kyo-admin/utils"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -59,8 +61,12 @@ func (s *sDbServices) Update(c *gin.Context, table string, id, updates interface
 		Updates(updates).Error
 }
 
-func (s *sDbServices) Delete(c *gin.Context) {
-
+func (s *sDbServices) Delete(c *gin.Context, table string, id interface{}) error {
+	t := time.Now()
+	return db.Table(table).
+		Where(utils.GetKey(c, table)+" = ?", id).
+		Update("deleted_at", t).
+		Error
 }
 
 func (s *sDbServices) Page(c *gin.Context) func(db *gorm.DB) *gorm.DB {
@@ -89,6 +95,8 @@ func (s *sDbServices) Search(c *gin.Context, param map[string]string) func(db *g
 			if v != "" {
 				slice := strings.Split(k, ".")
 				match := strings.ToUpper(slice[2])
+				fmt.Println(slice)
+				fmt.Println(match)
 				switch match {
 				case "LIKE":
 					v = "%" + v + "%"

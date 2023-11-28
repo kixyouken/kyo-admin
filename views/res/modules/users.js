@@ -4,6 +4,7 @@ layui.define(['admin'], function (exports) {
         , table = layui.table
         , form = layui.form
         , laydate = layui.laydate
+        , $ = layui.$
 
     laydate.render({
         elem: '#KYO-users-birthday'
@@ -24,7 +25,7 @@ layui.define(['admin'], function (exports) {
                         // 将日期字符串转换为Date对象
                         var inputDate = new Date(d.birthday);
                         // 使用Moment.js进行日期格式化
-                        var formattedDate = moment(inputDate).format('Y-MM-DD HH:mm:ss');
+                        var formattedDate = moment(inputDate).format('Y-MM-DD');
                         return formattedDate;
                     } else {
                         return "";
@@ -60,6 +61,66 @@ layui.define(['admin'], function (exports) {
         });
         return false; // 阻止默认 form 跳转
     });
+
+    table.on('tool(KYO-user-table)', function (obj) {
+        var data = obj.data;
+        switch (obj.event) {
+            case 'view':
+                admin.popup({
+                    id: 'KYO-user-table-view-popup' //定义唯一ID，防止重复弹出
+                    , area: ['80%', '80%']
+                    , success: function () {
+                        //将 views 目录下的某视图文件内容渲染给该面板
+                        layui.view(this.id).render('users/view', data);
+                    }
+                });
+                break;
+            case 'edit':
+                admin.popup({
+                    id: 'KYO-user-table-edit-popup' //定义唯一ID，防止重复弹出
+                    , area: ['80%', '80%']
+                    , success: function () {
+                        //将 views 目录下的某视图文件内容渲染给该面板
+                        layui.view(this.id).render('users/edit', data);
+                    }
+                });
+                break;
+            case 'delete':
+                layer.confirm('确定删除吗？', { icon: 2 }, function () {
+                    admin.req({
+                        url: '/api/table/users/' + data.user_id
+                        , type: 'delete'
+                        , done: function (res) {
+                            layer.msg(res.msg);
+                            layer.closeLast('dialog');
+                            table.reloadData('KYO-users-table');
+                        }
+                    })
+                })
+                break;
+            default:
+                break;
+        }
+    })
+
+    form.on('submit(KYO-user-save)', function (obj) {
+        var id = obj.field.user_id;
+        delete obj.field.user_id;
+        admin.req({
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            url: '/api/form/users/' + id
+            , type: 'put'
+            , data: JSON.stringify(obj.field)
+            , done: function (res) {
+                layer.msg(res.msg);
+                layer.closeLast('page');
+                table.reloadData('KYO-users-table');
+            }
+        })
+        return false
+    })
 
     exports('users', {});
 });

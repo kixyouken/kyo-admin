@@ -9,7 +9,6 @@ import (
 
 func Get(c *gin.Context) {
 	param := utils.GetParam(c)
-
 	table := c.Param("table")
 	result := []map[string]interface{}{}
 	services.DbServices.Get(c, table, &result, "*", param)
@@ -51,9 +50,16 @@ func Save(c *gin.Context) {
 }
 
 func Update(c *gin.Context) {
-
+	param := utils.GetForm(c)
+	table := c.Param("form")
+	id := c.Param("id")
+	services.DbServices.Update(c, table, id, param)
+	utils.Successful(c, "更新成功")
 }
 
 func Delete(c *gin.Context) {
-
+	table := c.Param("table")
+	id := c.Param("id")
+	services.DbServices.Delete(c, table, id)
+	utils.Successful(c, "删除成功")
 }

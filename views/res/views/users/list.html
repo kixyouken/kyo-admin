@@ -1,15 +1,5 @@
 <title>网站用户</title>
 
-<style>
-    .layui-input-prefix {
-        width: 80px;
-    }
-
-    .layui-input {
-        padding-left: 70px !important;
-    }
-</style>
-
 <div class="layui-card layadmin-header">
     <div class="layui-breadcrumb" lay-filter="breadcrumb">
         <a lay-href="">主页</a>
@@ -23,7 +13,7 @@
         <div class="layui-card-header">卡片面板</div>
         <div class="layui-card-body">
             <form class="layui-form layui-row layui-col-space15">
-                <div class="layui-col-md4">
+                <div class="layui-col-md3">
                     <div class="layui-input-wrap">
                         <div class="layui-input-prefix">
                             姓名
@@ -31,7 +21,7 @@
                         <input type="text" name="users.user_name.like" placeholder="姓名" class="layui-input">
                     </div>
                 </div>
-                <div class="layui-col-md4">
+                <div class="layui-col-md3">
                     <div class="layui-input-wrap">
                         <div class="layui-input-prefix">
                             生日
@@ -40,7 +30,7 @@
                             class="layui-input">
                     </div>
                 </div>
-                <div class="layui-col-md4">
+                <div class="layui-col-md3">
                     <div class="layui-input-wrap">
                         <div class="layui-input-prefix">
                             状态
@@ -52,7 +42,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="layui-col-md4">
+                <div class="layui-col-md3">
                     <div class="layui-input-wrap">
                         <div class="layui-input-prefix">
                             省名称
@@ -75,7 +65,7 @@
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </form>
-            <table class="layui-hide" id="KYO-users-table"></table>
+            <table class="layui-hide" id="KYO-users-table" lay-filter="KYO-user-table"></table>
         </div>
     </div>
 </div>

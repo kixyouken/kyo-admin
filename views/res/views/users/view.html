@@ -1,0 +1,71 @@
+<div class="layui-card">
+    <div class="layui-card-header">卡片面板</div>
+    <div class="layui-card-body">
+        <form class="layui-form layui-row layui-col-space15" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <script type="text/html" template>
+                        <input type="text" name="user_name" value="{{ d.params.user_name || '' }}" placeholder="请输入" autocomplete="off"
+                            class="layui-input" disabled>
+                    </script>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">生日</label>
+                <div class="layui-input-block">
+                    <script type="text/html" template lay-done="
+                        if (d.params.birthday) {
+                            layui.$('#KYO-user-birthday').val(moment(new Date(d.params.birthday)).format('Y-MM-DD'));
+                        }
+                        layui.laydate.render({elem: '#KYO-user-birthday'})
+                    ">
+                        <input type="text" name="birthday" value="{{ d.params.birthday || '' }}" id="KYO-user-birthday" placeholder="请输入" autocomplete="off" class="layui-input" disabled>
+                    </script>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">省</label>
+                <div class="layui-input-block">
+                    <script type="text/html" template lay-url="/api/table/provinces/get"
+                        lay-done="layui.$('#KYO-users-province_id').val(d.params.province_id);layui.form.render();">
+                        <select name="province_id" id="KYO-users-province_id" disabled>
+                            <option value="">请选择</option>
+                            {{#
+                                layui.each(d.data, function(index, item){ }}
+                                <option value="{{ item.province_id }}">{{ item.province_name }}</option>
+                                {{# });
+                            }}
+                        </select>
+                    </script>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">市</label>
+                <div class="layui-input-block">
+                    <script type="text/html" template
+                        lay-url="/api/table/citys/get?citys.province_id.%3D={{ d.params.province_id }}"
+                        lay-done="layui.$('#KYO-users-city_id').val(d.params.city_id);layui.form.render();">
+                            <select name="city_id" id="KYO-users-city_id" disabled>
+                                <option value="">请选择</option>
+                                {{#
+                                    layui.each(d.data, function(index, item){ }}
+                                    <option value="{{ item.city_id }}">{{ item.city_name }}</option>
+                                    {{# });
+                                }}
+                            </select>
+                        </script>
+                </div>
+            </div>
+            <!-- <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <script type="text/html" template>
+                        <input type="hidden" name="user_id" value="{{ d.params.user_id || 0 }}">
+                    </script>
+                    <button type="submit" class="layui-btn" lay-submit lay-filter="KYO-user-save">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div> -->
+        </form>
+    </div>
+</div>

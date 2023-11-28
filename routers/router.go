@@ -23,8 +23,8 @@ func GetRouter() *gin.Engine {
 		api.GET("/table/:table/get", controllers.Get)
 		api.GET("/table/:table/paginate", controllers.Paginate)
 		api.POST("/form/:form", controllers.Save)
-		api.PUT("/form/:form", controllers.Update)
-		api.DELETE("/table/:table", controllers.Delete)
+		api.PUT("/form/:form/:id", controllers.Update)
+		api.DELETE("/table/:table/:id", controllers.Delete)
 	}
 
 	r.GET("/ping", func(c *gin.Context) {

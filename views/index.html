@@ -13,6 +13,20 @@
             alert('请通过 localhost 访问');
         }
     </script>
+    <style>
+        .layui-input-prefix {
+            width: 80px;
+        }
+
+        .layui-input-wrap .layui-input-prefix+.layui-input,
+        .layui-input-wrap .layui-input-prefix~* .layui-input {
+            padding-left: 70px !important;
+        }
+
+        .layui-layer-admin {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 
 <body>
