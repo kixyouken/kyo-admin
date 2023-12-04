@@ -5,6 +5,9 @@ layui.define(['admin'], function (exports) {
         , form = layui.form
         , laydate = layui.laydate
         , $ = layui.$
+        , setter = layui.setter
+
+    var localStorage = layui.data(setter.tableName);
 
     laydate.render({
         elem: '#KYO-users-birthday'
@@ -80,7 +83,7 @@ layui.define(['admin'], function (exports) {
                     id: 'KYO-user-table-edit-popup' //定义唯一ID，防止重复弹出
                     , area: ['80%', '80%']
                     , success: function () {
-                        //将 views 目录下的某视图文件内容渲染给该面板
+                        // 将 views 目录下的某视图文件内容渲染给该面板
                         layui.view(this.id).render('users/edit', data);
                     }
                 });
@@ -88,7 +91,7 @@ layui.define(['admin'], function (exports) {
             case 'delete':
                 layer.confirm('确定删除吗？', { icon: 2 }, function () {
                     admin.req({
-                        url: '/api/table/users/' + data.user_id
+                        url: '/api/table/users/' + data.user_id + '?access_token=' + localStorage[setter.request.tokenName]
                         , type: 'delete'
                         , done: function (res) {
                             layer.msg(res.msg);
@@ -110,7 +113,7 @@ layui.define(['admin'], function (exports) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            url: '/api/form/users/' + id
+            url: '/api/form/users/' + id + '?access_token=' + localStorage[setter.request.tokenName]
             , type: 'put'
             , data: JSON.stringify(obj.field)
             , done: function (res) {

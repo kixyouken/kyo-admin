@@ -36,3 +36,11 @@ func Paginate(c *gin.Context, data, count interface{}) {
 		"msg":    "success",
 	})
 }
+
+func Logoutful(c *gin.Context, msg interface{}) {
+	c.JSON(200, gin.H{
+		"code":   1001,
+		"status": 400,
+		"msg":    msg,
+	})
+}
