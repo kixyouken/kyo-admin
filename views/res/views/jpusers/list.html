@@ -1,0 +1,92 @@
+<title>网站用户</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>用户</cite></a>
+        <a><cite>网站用户</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">卡片面板</div>
+        <div class="layui-card-body">
+            <form class="layui-form layui-row layui-col-space15">
+                <div class="layui-col-md3">
+                    <div class="layui-input-wrap">
+                        <div class="layui-input-prefix">
+                            会员ID
+                        </div>
+                        <input type="text" name="users.id.=" placeholder="会员ID" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-col-md3">
+                    <div class="layui-input-wrap">
+                        <div class="layui-input-prefix">
+                            生日
+                        </div>
+                        <input type="text" name="users.birthday.=" id="KYO-jpusers-birthday" placeholder="生日"
+                            class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-col-md3">
+                    <div class="layui-input-wrap">
+                        <div class="layui-input-prefix">
+                            学校名
+                        </div>
+                        <input type="text" name="master_university.name.like" placeholder="学校"
+                            class="layui-input">
+                    </div>
+                </div>
+                <!-- <div class="layui-col-md3">
+                    <div class="layui-input-wrap">
+                        <div class="layui-input-prefix">
+                            状态
+                        </div>
+                        <select name="users.state.=">
+                            <option value="">请选择</option>
+                            <option value="0">正常</option>
+                            <option value="1">删除</option>
+                        </select>
+                    </div>
+                </div> -->
+                <!-- <div class="layui-col-md3">
+                    <div class="layui-input-wrap">
+                        <div class="layui-input-prefix">
+                            省名称
+                        </div>
+                        <script type="text/html" template lay-url="/api/table/provinces/get"
+                            lay-done="layui.form.render();">
+                            <select name="users.province_id.=">
+                                <option value="">请选择</option>
+                                {{#
+                                    layui.each(d.data, function(index, item){ }}
+                                    <option value="{{ item.province_id }}">{{ item.province_name }}</option>
+                                    {{# });
+                                }}
+                            </select>
+                        </script>
+                    </div>
+                </div> -->
+                <div class="layui-btn-container layui-col-xs12">
+                    <button class="layui-btn" lay-submit lay-filter="KYO-jpusers-table-search">搜索</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </form>
+            <table class="layui-hide" id="KYO-jpusers-table" lay-filter="KYO-jpuser-table"></table>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="KYO-jpusers-table-bar">
+    <div class="layui-clear-space">
+        <a class="layui-btn layui-btn-primary layui-border-green layui-btn-xs" lay-event="view">详情</a>
+        <a class="layui-btn layui-btn-primary layui-border-blue layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-primary layui-border-red layui-btn-xs" lay-event="delete">删除</a>
+    </div>
+</script>
+
+<script>
+    layui.use('jpusers', layui.factory('jpusers'));
+</script>

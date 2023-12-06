@@ -1,0 +1,9 @@
+{
+    "table": "admin_menu",
+    "key": "id",
+    "parent_id": "parent_id",
+    "name": "title",
+    "title": "title",
+    "icon": "icon",
+    "jump": "uri"
+}

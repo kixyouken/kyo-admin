@@ -3,29 +3,15 @@
     "joins": [
         {
             "join": "inner",
-            "table": "provinces",
-            "foreign": "province_id",
-            "key": "province_id",
-            "fields": ["province_id", "province_name"]
-        },
-        {
-            "join": "inner",
-            "table": "citys",
-            "foreign": "city_id",
-            "key": "city_id",
-            "fields": ["city_id", "city_name"]
-        },
-        {
-            "join": "inner",
-            "table": "countys",
-            "foreign": "county_id",
-            "key": "county_id",
-            "fields": ["county_id", "county_name"]
+            "table": "master_university",
+            "foreign": "master_university_id",
+            "key": "id",
+            "fields": ["id", "name"]
         }
     ],
     "orders": [
         {
-            "field": "users.user_id",
+            "field": "users.id",
             "order": ""
         }
     ],

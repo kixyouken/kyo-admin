@@ -7,6 +7,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Menu 获取 menu 所有数据
+//
+//	@param c
+func Menu(c *gin.Context) {
+	table := c.Param("table")
+	result := []map[string]interface{}{}
+	services.DbServices.Get(c, table, &result, "*", nil)
+	menu := utils.BuildTree(c, result, 0)
+	utils.Dataful(c, menu)
+}
+
 func Get(c *gin.Context) {
 	param := utils.GetParam(c)
 	table := c.Param("table")
@@ -20,9 +31,9 @@ func Paginate(c *gin.Context) {
 	table := c.Param("table")
 	tableFile, _ := utils.GetTableJson(c, table)
 	var count int64
-	services.DbServices.Count(c, table, &count, param, tableFile)
+	services.DbServices.Count(c, &count, param, tableFile)
 	result := []map[string]interface{}{}
-	services.DbServices.Paginate(c, table, &result, "*", param, tableFile)
+	services.DbServices.Paginate(c, &result, "*", param, tableFile)
 	utils.Paginate(c, result, count)
 }
 

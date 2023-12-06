@@ -6,7 +6,7 @@
                 <label class="layui-form-label">姓名</label>
                 <div class="layui-input-block">
                     <script type="text/html" template>
-                        <input type="text" name="user_name" value="{{ d.params.user_name || '' }}" placeholder="请输入" autocomplete="off"
+                        <input type="text" name="name" value="{{ d.params.name || '' }}" placeholder="请输入" autocomplete="off"
                             class="layui-input" disabled>
                     </script>
                 </div>
@@ -15,7 +15,7 @@
                 <label class="layui-form-label">生日</label>
                 <div class="layui-input-block">
                     <script type="text/html" template>
-                        <input type="text" name="birthday" value="{{ moment(new Date(d.params.birthday)).format('Y-MM-DD') || '' }}" id="KYO-user-birthday" placeholder="请输入" autocomplete="off" class="layui-input" disabled>
+                        <input type="text" name="birthday" value="{{ moment(new Date(d.params.birthday)).format('Y-MM-DD') || '' }}" id="KYO-jpusers-birthday" placeholder="请输入" autocomplete="off" class="layui-input" disabled>
                     </script>
                 </div>
             </div>
@@ -23,8 +23,8 @@
                 <label class="layui-form-label">省</label>
                 <div class="layui-input-block">
                     <script type="text/html" template lay-url="/api/table/provinces/get"
-                        lay-done="layui.$('#KYO-users-province_id').val(d.params.province_id);layui.form.render();">
-                        <select name="province_id" id="KYO-users-province_id" disabled>
+                        lay-done="layui.$('#KYO-jpusers-province_id').val(d.params.province_id);layui.form.render();">
+                        <select name="province_id" id="KYO-jpusers-province_id" disabled>
                             <option value="">请选择</option>
                             {{#
                                 layui.each(d.data, function(index, item){ }}
@@ -40,8 +40,8 @@
                 <div class="layui-input-block">
                     <script type="text/html" template
                         lay-url="/api/table/citys/get?citys.province_id.%3D={{ d.params.province_id }}"
-                        lay-done="layui.$('#KYO-users-city_id').val(d.params.city_id);layui.form.render();">
-                            <select name="city_id" id="KYO-users-city_id" disabled>
+                        lay-done="layui.$('#KYO-jpusers-city_id').val(d.params.city_id);layui.form.render();">
+                            <select name="city_id" id="KYO-jpusers-city_id" disabled>
                                 <option value="">请选择</option>
                                 {{#
                                     layui.each(d.data, function(index, item){ }}

@@ -25,8 +25,8 @@ func (s *sDbServices) Get(c *gin.Context, table string, out, columns interface{}
 		Find(out).Error
 }
 
-func (s *sDbServices) Paginate(c *gin.Context, table string, out, columns interface{}, param map[string]string, tableFile *utils.TableFile) error {
-	return db.Table(table).
+func (s *sDbServices) Paginate(c *gin.Context, out, columns interface{}, param map[string]string, tableFile *utils.TableFile) error {
+	return db.Table(tableFile.Table).
 		Scopes(s.Page(c), s.Search(c, param), s.Fields(c, tableFile), s.Joins(c, tableFile), s.Orders(c, tableFile), s.Wheres(c, tableFile)).
 		Select(columns).
 		Find(out).Error
@@ -40,8 +40,8 @@ func (s *sDbServices) Find(c *gin.Context, table string, out, columns interface{
 		Find(out).Error
 }
 
-func (s *sDbServices) Count(c *gin.Context, table string, count *int64, param map[string]string, tableFile *utils.TableFile) error {
-	return db.Table(table).
+func (s *sDbServices) Count(c *gin.Context, count *int64, param map[string]string, tableFile *utils.TableFile) error {
+	return db.Table(tableFile.Table).
 		Scopes(s.Search(c, param), s.Joins(c, tableFile), s.Wheres(c, tableFile)).
 		Limit(1).
 		Count(count).Error

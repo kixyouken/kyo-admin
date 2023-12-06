@@ -2,7 +2,6 @@ package routers
 
 import (
 	"kyo-admin/controllers"
-	"kyo-admin/middlewares"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,10 +18,11 @@ func GetRouter() *gin.Engine {
 		admin.GET("/:table/logout", controllers.Logout)
 	}
 
-	r.Use(middlewares.Token())
+	// r.Use(middlewares.Token())
 
 	api := r.Group("api")
 	{
+		api.GET("/table/:table/menu", controllers.Menu)
 		api.GET("/table/:table/get", controllers.Get)
 		api.GET("/table/:table/paginate", controllers.Paginate)
 		api.POST("/form/:form", controllers.Save)
