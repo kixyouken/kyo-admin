@@ -1,0 +1,10 @@
+{
+    "table": "logins",
+    "key": "id",
+    "result": {
+        "count": [
+            "total",
+            "week"
+        ]
+    }
+}

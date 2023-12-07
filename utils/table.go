@@ -12,6 +12,7 @@ type TableFile struct {
 	Wheres []TableWheres `json:"wheres"`
 	Joins  []TableJoins  `json:"joins"`
 	Orders []TableOrders `json:"orders"`
+	Result TableResult   `json:"result"`
 }
 
 type TableJoins struct {
@@ -30,6 +31,10 @@ type TableOrders struct {
 type TableWheres struct {
 	Field string `json:"field"`
 	Value string `json:"value"`
+}
+
+type TableResult struct {
+	Count []string `json:"count"`
 }
 
 func GetTableJson(c *gin.Context, table string) (*TableFile, error) {

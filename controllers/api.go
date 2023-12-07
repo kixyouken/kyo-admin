@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"kyo-admin/services"
 	"kyo-admin/utils"
 
@@ -37,24 +38,21 @@ func Paginate(c *gin.Context) {
 	utils.Paginate(c, result, count)
 }
 
-// func Find(c *gin.Context) {
-// 	param := utils.GetForm(c)
-// 	if !utils.VerifyCaptcha(param["id"].(string), param["vercode"].(string)) {
-// 		utils.Errorful(c, "验证码错误")
-// 		return
-// 	}
+func Count(c *gin.Context) {
+	param := utils.GetParam(c)
+	table := c.Param("table")
 
-// 	table := c.Param("table")
-// 	result := map[string]interface{}{}
-// 	delete(param, "id")
-// 	delete(param, "vercode")
-// 	services.DbServices.Find(c, table, &result, "*", param)
-// 	if len(result) == 0 {
-// 		utils.Errorful(c, "账号或密码错误")
-// 		return
-// 	}
-// 	utils.Dataful(c, result)
-// }
+	tableFile, _ := utils.GetTableJson(c, table)
+	fmt.Println(tableFile)
+	var count int64
+
+	services.DbServices.Count(c, &count, param, tableFile)
+	result := map[string]interface{}{}
+	for _, v := range tableFile.Result.Count {
+		result[v] = count
+	}
+	utils.Dataful(c, result)
+}
 
 func Save(c *gin.Context) {
 
