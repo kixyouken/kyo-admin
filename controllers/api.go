@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"kyo-admin/services"
 	"kyo-admin/utils"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -52,6 +53,25 @@ func Count(c *gin.Context) {
 		result[v] = count
 	}
 	utils.Dataful(c, result)
+}
+
+func Line(c *gin.Context) {
+	table := c.Param("table")
+	echartsFile, _ := utils.GetEchartsJson(c, table)
+	result := []map[string]interface{}{}
+	services.DbServices.Line(c, &result, echartsFile)
+	xAxis := []string{}
+	yAxis := []int64{}
+	for _, v := range result {
+		t := v["login_date"].(time.Time).Format("2006-01-02")
+		xAxis = append(xAxis, t)
+		yAxis = append(yAxis, v["login_count"].(int64))
+	}
+	res := map[string]interface{}{
+		"count": yAxis,
+		"date":  xAxis,
+	}
+	utils.Dataful(c, res)
 }
 
 func Save(c *gin.Context) {

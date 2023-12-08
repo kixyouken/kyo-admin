@@ -47,6 +47,15 @@ func (s *sDbServices) Count(c *gin.Context, count *int64, param map[string]strin
 		Count(count).Error
 }
 
+func (s *sDbServices) Line(c *gin.Context, out interface{}, echartsFile *utils.EchartsFile) error {
+	return db.Table(echartsFile.Table).
+		Select("COUNT(*) AS login_count", "DATE(created_at) AS login_date").
+		Group("login_date").
+		Limit(10).
+		Find(out).
+		Error
+}
+
 func (s *sDbServices) Read(c *gin.Context) {
 
 }

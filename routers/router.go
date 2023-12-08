@@ -29,6 +29,9 @@ func GetRouter() *gin.Engine {
 		api.GET("/table/:table/get", controllers.Get)
 		api.GET("/table/:table/paginate", controllers.Paginate)
 		api.GET("/table/:table/count", controllers.Count)
+
+		api.GET("/echarts/:table/line", controllers.Line)
+
 		api.POST("/form/:form", controllers.Save)
 		api.PUT("/form/:form/:id", controllers.Update)
 		api.DELETE("/table/:table/:id", controllers.Delete)
